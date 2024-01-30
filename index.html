@@ -3,60 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Generate a personalized wedding speech with ease. Tailored to your unique story, ready in minutes.">
-    <title>Wedding Speech Generator</title>
+    <meta name="description" content="Direct, effective corporate communication with TBD's Speak Generator.">
+    <title>Corporate Speak Generator - TBD</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="style.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+    <link rel="stylesheet" href="styles.css"> <!-- Custom CSS for design -->
 </head>
 <body>
-    <section class="hero is-primary is-bold is-fullheight-with-navbar">
-        <div class="hero-head">
-            <nav class="navbar">
-                <div class="container">
-                    <div class="navbar-brand">
-                        <a class="navbar-item" href="#">
-                            <h1 class="title">Speakeasy</h1>
-                        </a>
-                        <span class="navbar-burger burger" data-target="navbarMenuHeroA">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                    </div>
-                    <div id="navbarMenuHeroA" class="navbar-menu">
-                        <div class="navbar-end">
-                            <a class="navbar-item" href="#features">Features</a>
-                            <a class="navbar-item" href="#testimonials">Testimonials</a>
-                            <a class="navbar-item" href="generator.html">Get Started</a>
-                        </div>
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="#">
+                        <h1 class="title">TBD</h1>
+                    </a>
+                </div>
+                <div class="navbar-menu">
+                    <div class="navbar-end">
+                        <a class="navbar-item" href="#features">Features</a>
+                        <a class="navbar-item" href="#testimonials">Testimonials</a>
+                        <a class="navbar-item" href="#generator">Use It Now</a>
                     </div>
                 </div>
-            </nav>
-        </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero blurred-bg">
         <div class="hero-body">
             <div class="container has-text-centered">
-                <h2 class="title">Create Memorable Wedding Speeches in Minutes</h2>
-                <p class="subtitle">Personalized, heartfelt, and humorous - craft the perfect speech for the special day.</p>
-                <a class="button is-info is-large" href="generator.html">Create Your Speech</a>
+                <h2 class="title">Say W*F without saying W*F in office comms</h2>
+                <p class="subtitle">No fluff. Just effective corporate communication.</p>
             </div>
         </div>
     </section>
+    
+
+    <section class="section" id="generator">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <h1 class="title has-text-centered">Corporate Message Generator</h1>
+                    <form id="speechForm">
+                      
+                        <div class="field">
+                            <label class="label">Message Content</label>
+                            <div class="control">
+                                <textarea class="textarea" placeholder="What would you like to say?" id="messageContent" required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="field is-grouped is-grouped-centered">
+                            <div class="control">
+                                <button class="button is-black" type="submit">Talk your sh*t</button>
+                            </div>
+                            <div class="control">
+                                <button class="button is-light" type="reset">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <div class="box">
+                        <h2 class="subtitle">Your Corporate Message</h2>
+                        <p id="generatedSpeechPlaceholder">Your corporate message will appear here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
 
     <section id="features" class="section">
         <div class="container">
             <div class="columns">
                 <div class="column">
-                    <h3 class="title is-3">Personalized Speeches</h3>
-                    <p>Custom-tailored speeches that resonate with your audience and make every moment unforgettable.</p>
+                    <h3 class="title">Clear Messaging</h3>
+                    <p>Speak directly. Be understood.</p>
                 </div>
                 <div class="column">
-                    <h3 class="title is-3">Easy to Use</h3>
-                    <p>Our intuitive platform guides you through the process of creating the perfect speech with ease.</p>
+                    <h3 class="title">Zero Effort</h3>
+                    <p>From casual to corporate in a click.</p>
                 </div>
                 <div class="column">
-                    <h3 class="title is-3">Instant Preview</h3>
-                    <p>Preview your speech instantly and make sure everything is just right before the big day.</p>
+                    <h3 class="title">Immediate Results</h3>
+                    <p>See the difference instantly.</p>
                 </div>
             </div>
         </div>
@@ -64,13 +103,13 @@
 
     <section id="testimonials" class="section">
         <div class="container">
-            <h2 class="title has-text-centered">What Our Users Say</h2>
+            <h2 class="title has-text-centered">Real Ass Feedback</h2>
             <div class="columns">
                 <div class="column">
-                    <blockquote>"This service saved me hours of brainstorming. The speech was a hit!" - Alex G.</blockquote>
+                    <blockquote>"It's straightforward and gets the job done. No complications." - Alex G.</blockquote>
                 </div>
                 <div class="column">
-                    <blockquote>"Incredibly personal and funny. It felt like it was written by a best friend." - Jamie L.</blockquote>
+                    <blockquote>"This tool cuts through the noise. It’s essential for clear communication." - Jamie L.</blockquote>
                 </div>
             </div>
         </div>
@@ -78,9 +117,12 @@
 
     <footer class="footer">
         <div class="content has-text-centered">
-            <p>&copy; 2024 Wedding Speech Generator. All rights reserved.</p>
+            <p>&copy; 2024 TBD. Corporate Communication Simplified.</p>
         </div>
     </footer>
+
     <script src="script.js"></script>
+
 </body>
+
 </html>

@@ -3,66 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generate Wedding Speech</title>
+    <title>TBD - Corporate Message Generator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> <!-- Custom CSS -->
 </head>
 <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="index.html">
+                    <strong>TBD</strong>
+                </a>
+            </div>
+        </div>
+    </nav>
+
     <section class="section">
         <div class="container">
-            <a href="index.html" class="text">Go home</a>
             <div class="columns is-centered">
                 <div class="column is-half">
-                    <h1 class="title has-text-centered">Speakeasy</h1>
+                    <h1 class="title has-text-centered">Corporate Message Generator</h1>
                     <form id="speechForm">
+                      
                         <div class="field">
-                            <label class="label">Your Name</label>
+                            <label class="label">Message Content</label>
                             <div class="control">
-                                <input class="input" type="text" placeholder="Enter your name" id="speakerName" required>
+                                <textarea class="textarea" placeholder="What would you like to say?" id="messageContent" required></textarea>
                             </div>
                         </div>
 
-                        <div class="field">
-                            <label class="label">Couple's Names</label>
+                        <div class="field is-grouped is-grouped-centered">
                             <div class="control">
-                                <input class="input" type="text" placeholder="Enter the couple's names (eg- Jamie & Marie)" id="coupleNames" required>
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label class="label">How do you know the couple?</label>
-                            <div class="control">
-                                <textarea class="textarea" placeholder="Your relationship with the couple" id="relationship" required></textarea>
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label class="label">Special Memories or Stories</label>
-                            <div class="control">
-                                <textarea class="textarea" placeholder="Any special memories or stories to include?" id="memories" required></textarea>
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label class="label">Key Messages</label>
-                            <div class="control">
-                                <textarea class="textarea" placeholder="Key messages or sentiments you wish to express" id="keyMessages" required></textarea>
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label class="label">Any other details (Optional)</label>
-                            <div class="control">
-                                <textarea class="textarea" placeholder="Any other details you want to include" id="otherDetails"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="field is-grouped">
-                            <div class="control">
-                                <button class="button is-link" type="submit">Generate Speech</button>
+                                <button class="button is-black" type="submit">Generate</button>
                             </div>
                             <div class="control">
-                                <button class="button is-link is-light" type="reset">Cancel</button>
+                                <button class="button is-light" type="reset">Cancel</button>
                             </div>
                         </div>
                     </form>
@@ -75,14 +50,20 @@
         <div class="container">
             <div class="columns is-centered">
                 <div class="column is-half">
-                    <div class="generated-speech">
-                        <h2 class="subtitle">Your Speech</h2>
-                        <p id="generatedSpeechPlaceholder">Writing your wedding speech...</p>
+                    <div class="box">
+                        <h2 class="subtitle">Your Corporate Message</h2>
+                        <p id="generatedSpeechPlaceholder">Your corporate message will appear here.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>&copy; 2024 TBD. Corporate Communication Simplified.</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>

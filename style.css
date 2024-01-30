@@ -1,77 +1,64 @@
-/* Custom Styles for Bulma Integration */
-
-/* Primary Color Override */
-.hero.is-primary {
-    background-image: linear-gradient(to right, #4facfe, #00f2fe);
+/* Base styles */
+body, html {
+    font-family: 'Arial', sans-serif;
+    color: #333; /* Dark grey for text */
+    background-color: #fff; /* White background */
 }
 
-/* Navbar Brand Title Style */
-.navbar-brand .title {
-    color: #fff;
-    font-weight: 600;
+.blurred-bg {
+    background-image: url('image/Screenshot\ 2024-01-29\ at\ 23.47.08.png');
+    background-size: cover;
+    background-position: center;
+    filter: blur(5px); /* Adjust the blur intensity as needed */
+    position: relative;
+    overflow: hidden;
 }
 
-/* Burger Icon Color */
-.navbar-burger.burger span {
+.blurred-bg .hero-body {
+    position: relative; /* To position the text above the blurred background */
+}
+
+
+/* Navbar styles */
+.navbar {
     background-color: #fff;
+    color: #333;
 }
 
-/* Navbar Menu - link colors */
-.navbar-menu .navbar-item {
-    color: #fff;
-    font-weight: 500;
+.navbar-item, .footer {
+    color: #333;
 }
 
-.navbar-menu .navbar-item:hover {
-    background-color: #4facfe;
-    color: #222;
+/* Hero section styles */
+.hero {
+    background-color: #fff;
+    color: #333;
+    padding: 4rem 0;
 }
 
-/* Button Customization */
-.button.is-info.is-large {
-    background-color: #ff6b6b;
-    border-color: transparent;
-    color: #fff;
+/* Button styles */
+.button {
+    background-color: #000; /* Black */
+    color: #fff; /* White text */
+    border: none;
 }
 
-.button.is-info.is-large:hover {
-    background-color: #ff4757;
-    color: #fff;
+.button:hover {
+    background-color: #333; /* Dark grey for hover */
 }
 
-/* Feature Columns */
-#features .column {
-    padding: 3rem;
-    background-color: #f9f9f9; /* Light background for feature columns */
-    border-radius: 8px; /* Slight rounding of corners for aesthetic */
-    margin: 1rem; /* Space out columns slightly */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+/* Section styles */
+.section {
+    padding: 3rem 1.5rem;
 }
 
-/* Testimonials Customization */
-#testimonials blockquote {
-    font-style: italic;
-    color: #555;
-    border-left: 4px solid #4facfe;
-    padding-left: 1rem;
-    margin: 1rem 0;
-}
-
-/* Footer Customization */
+/* Footer styles */
 .footer {
-    background-color: #333;
-    color: #f4f4f4;
+    background-color: #000; /* Black */
+    color: #fff; /* White text */
 }
 
-.footer p {
-    margin-bottom: 0;
+/* Responsive design adjustments as needed */
+@media (max-width: 768px) {
+    /* Responsive styles */
 }
-
-/* Responsive Navbar Toggle */
-@media screen and (max-width: 768px) {
-    .navbar-menu {
-        background-color: #333; /* Ensure visibility on toggle */
-    }
-}
-
-/* Include additional responsive or custom styles as needed */

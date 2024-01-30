@@ -51,29 +51,24 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault(); // Prevent the default form submission
 
         // Collect user input from form fields
-        const speakerName = document.getElementById("speakerName").value;
-        const coupleNames = document.getElementById("coupleNames").value;
-        const relationship = document.getElementById("relationship").value;
-        const memories = document.getElementById("memories").value;
-        const keyMessages = document.getElementById("keyMessages").value;
-        const otherDetails = document.getElementById("otherDetails").value;
-
+        const message = document.getElementById("messageContent").value;
+       
         // Prepare the data to send to the OpenAI API
         const inputData = {
             model: "gpt-3.5-turbo",
             messages: [
                 {
                     "role": "user",
-                    "content": `Create a wedding speech for ${coupleNames}. The speaker, ${speakerName}, knows the couple through ${relationship}. ${keyMessages} ${memories} ${otherDetails} finish it in 400 words. Make it humorous too`,
+                    "content": `Transform the following unprofessional message into a professional, corporate-style communication suitable for email: ${message}. Please rewrite it to be formal, clear, and suitable for a professional email, ensuring that it maintains the original message's intent. In not more than 200 characters`,
                 }
             ],
-            max_tokens: 400, // Adjust the max tokens as needed
+            max_tokens: 200, // Adjust the max tokens as needed
             temperature: 0.7, // Adjust the temperature for creativity
             n: 1, // Number of responses to generate
         };
         const headers = {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer <OPEN_API_KEY>`, // Replace with your OpenAI API key
+            'Authorization': `Bearer <OPEN_AI_KEY>`, // Replace with your OpenAI API key
             'Openai-Organization': organizationId, // Include the Organization ID here
         };
         
