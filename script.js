@@ -1,3 +1,8 @@
+const _BASE_URL =
+window.location.host === "youreplied.com"
+    ? "https://co-sp-b97fb3a1fc11.herokuapp.com"
+    : "http://localhost:3000";
+
 document.addEventListener('DOMContentLoaded', () => {
     // Get all "navbar-burger" elements
     const navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
@@ -55,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const message = document.getElementById("messageContent").value;
        
         // Make an API request to OpenAI with the updated headers
-    fetch('http://localhost:3000/ask', {
+    fetch(`${_BASE_URL}/ask`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
