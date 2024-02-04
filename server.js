@@ -28,12 +28,13 @@ app.use(express.json());
 
 app.use(express.static("."));
 
+// heroku url: https://co-sp-b97fb3a1fc11.herokuapp.com/
 const _BASE_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
     : process.env.NODE_ENV === "staging"
-    ? "https://co-sp-b97fb3a1fc11.herokuapp.com/"
-    : "https://co-sp-b97fb3a1fc11.herokuapp.com/";
+    ? "http://youreplied.com"
+    : "http://youreplied.com";
 
 const LOREM =
   "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dignissimos hic laborum odit ex, quas tenetur? Harum, sit obcaecati corporis modi natus voluptatibus voluptate repellendus maxime quos reiciendis, cum repudiandae.";
