@@ -38,7 +38,7 @@ const _BASE_URL =
 const LOREM =
   "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dignissimos hic laborum odit ex, quas tenetur? Harum, sit obcaecati corporis modi natus voluptatibus voluptate repellendus maxime quos reiciendis, cum repudiandae.";
 
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY_TEST, {
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY_PROD, {
   apiVersion: "2022-08-01",
   appInfo: {
     // For sample support and debugging, not required for production:
