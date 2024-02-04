@@ -30,9 +30,9 @@ app.use(express.static("."));
 
 const _BASE_URL =
   process.env.NODE_ENV === "production"
-    ? "https://cos.herokuapp.com"
+    ? "https://co-sp-b97fb3a1fc11.herokuapp.com/"
     : process.env.NODE_ENV === "staging"
-    ? "https://cos.herokuapp.com"
+    ? "https://co-sp-b97fb3a1fc11.herokuapp.com/"
     : "http://localhost:3000";
 
 const LOREM =
