@@ -9,7 +9,8 @@ body, html {
     background-image: url('image/Screenshot\ 2024-01-29\ at\ 23.47.08.png');
     background-size: cover;
     background-position: center;
-    filter: blur(5px); /* Adjust the blur intensity as needed */
+    /* filter: blur(5px); */
+    /* Adjust the blur intensity as needed */
     position: relative;
     overflow: hidden;
 }
