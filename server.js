@@ -96,8 +96,12 @@ app.get("/success", async (req, res) => {
   req.session.answer = "";
   req.session.half_answer = "";
 
-  res.set("Content-Type", "text/html");
-  res.send(JSON.stringify(answer));
+  // res.set("Content-Type", "text/html");
+  // res.send(JSON.stringify(answer));
+
+  res.send({
+    answer
+  })
 });
 
 /* app.get("/", async (req, res) => {
