@@ -33,8 +33,8 @@ const _BASE_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
     : process.env.NODE_ENV === "staging"
-    ? "http://youreplied.com"
-    : "http://youreplied.com";
+    ? "https://youreplied.com"
+    : "https://youreplied.com";
 
 const LOREM =
   "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dignissimos hic laborum odit ex, quas tenetur? Harum, sit obcaecati corporis modi natus voluptatibus voluptate repellendus maxime quos reiciendis, cum repudiandae.";
@@ -100,7 +100,7 @@ app.get("/success", async (req, res) => {
   res.send(JSON.stringify(answer));
 });
 
-app.get("/", async (req, res) => {
+/* app.get("/", async (req, res) => {
   const options = {
     root: __dirname,
   };
@@ -113,7 +113,7 @@ app.get("/", async (req, res) => {
       console.log("Sent:", fileName);
     }
   });
-});
+}); */
 
 app.post("/ask", express.json(), async (req, res) => {
   console.log("req.body", req.body);

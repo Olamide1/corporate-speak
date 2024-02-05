@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Direct, effective corporate communication with You Replied's Speak Generator.">
+    <title>Corporate Speak Generator - You Replied</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Custom CSS for design -->
+    <!-- Thank-God1 -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+<body>
+
+
+<div id="answer-here"></div>
+
+    <script>
+
+const _BASE_URL =
+window.location.host === "youreplied.com"
+    ? "https://corporate-speak-b6a8f89a1523.herokuapp.com"
+    : "http://localhost:3000";
+
+
+    const generatedSpeechPlaceholder = document.getElementById("answer-here");
+
+        // Make an API request to OpenAI with the updated headers
+        fetch(`${_BASE_URL}/ask`, {
+        // method: 'GET',
+        
+    })
+    // .then(response => response.json())
+    .then(data => {
+        // console.log('da', data);
+        // Display the generated speech in the placeholder
+        generatedSpeechPlaceholder.innerHTML = data;
+
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+    </script>
+
+</body>
+
+</html>
