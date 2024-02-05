@@ -90,7 +90,7 @@ app.post(
 );
 
 app.get("/success", async (req, res) => {
-  const answer = req.session.answer;
+  const answer = req.session.answer ?? "Go home to ask a question.";
 
   // clear session data
   req.session.answer = "";
@@ -100,7 +100,7 @@ app.get("/success", async (req, res) => {
   // res.send(JSON.stringify(answer));
 
   res.send({
-    answer
+    answer: answer
   })
 });
 
