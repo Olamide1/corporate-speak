@@ -28,7 +28,7 @@ app.use(express.json());
 
 app.use(express.static("."));
 
-// heroku url: https://co-sp-b97fb3a1fc11.herokuapp.com/
+// heroku url: https://corporate-speak-b6a8f89a1523.herokuapp.com/
 const _BASE_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000"

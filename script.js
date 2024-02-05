@@ -1,6 +1,6 @@
 const _BASE_URL =
 window.location.host === "youreplied.com"
-    ? "https://co-sp-b97fb3a1fc11.herokuapp.com"
+    ? "https://corporate-speak-b6a8f89a1523.herokuapp.com"
     : "http://localhost:3000";
 
 document.addEventListener('DOMContentLoaded', () => {
