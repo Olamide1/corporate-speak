@@ -27,14 +27,14 @@ window.location.host === "youreplied.com"
 
         // Make an API request to OpenAI with the updated headers
         fetch(`${_BASE_URL}/success`, {
-        // method: 'GET',
+        method: 'GET',
         
     })
-    // .then(response => response.json())
+    .then(response => response.json())
     .then(data => {
         // console.log('da', data);
         // Display the generated speech in the placeholder
-        generatedSpeechPlaceholder.innerHTML = data;
+        generatedSpeechPlaceholder.innerHTML = data.answer;
 
     })
     .catch(error => {
