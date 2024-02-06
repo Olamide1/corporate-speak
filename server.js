@@ -1,6 +1,9 @@
 require("dotenv").config();
+
+const crypto = require("crypto");
 const express = require("express");
 const session = require("express-session");
+const cookieParser = require('cookie-parser')
 /**
  * Store data in session.
  * Reset Session once payment is made.
@@ -23,6 +26,17 @@ if (process.env.NODE_ENV === "production") {
 }
 app.use(session(_session));
 
+const cookieOptions = {
+  httpOnly: true, // so frontend js can't access
+  maxAge: (1000 * 60 * 60 * 24), // 1 day
+  sameSite: 'none',
+  // path: '' // until we figure out how to add multiple path
+}
+
+if (process.env.NODE_ENV === 'production') {
+  cookieOptions.secure = true // localhost, too, won't work if true
+}
+app.use(cookieParser(process.env.SESSION_SECRET, cookieOptions))
 app.use(cors());
 app.use(express.json());
 
@@ -49,6 +63,25 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY_TEST, {
   },
 });
 
+// https://gist.github.com/aabiskar/c1d80d139f83f6a43593ce503e29964c
+
+const encryption_key = process.env.ENCRYPTION_KEY; // Must be 32 characters
+const initialization_vector = process.env.INITIALIZATION_VECTOR; // Must be 16 characters
+
+function encrypt(text){
+  const cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(encryption_key), Buffer.from(initialization_vector))
+  let crypted = cipher.update(text, 'utf8', 'hex')
+  crypted += cipher.final('hex')
+  return crypted
+}
+
+function decrypt(text){
+  const decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(encryption_key), Buffer.from(initialization_vector))
+  let dec = decipher.update(text, 'hex', 'utf8')
+  dec += decipher.final('utf8')
+  return dec
+}
+
 app.post(
   "/payment",
   express.urlencoded({ extended: true }),
@@ -58,7 +91,7 @@ app.post(
         // customer_email: newOrder.email, // maybe get from cookies
         line_items: [
           {
-            price: process.env.STRIPE_TEST_PRICE, // test price
+            price: process.env.STRIPE_TEST_PRICE, // stripe price id
             quantity: 1,
           },
         ],
@@ -72,7 +105,7 @@ app.post(
          * the actual Session ID is returned in the query parameter when your customer
          * is redirected to the success page.
          */
-        success_url: `${_BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
+        success_url: `${_BASE_URL}/success.html?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${_BASE_URL}`, // failed-order
       });
 
@@ -90,7 +123,8 @@ app.post(
 );
 
 app.get("/success", async (req, res) => {
-  const answer = req.session.answer ?? "Go home to ask a question.";
+  const answer = req.session.answer ? req.session.answer : req.cookies.a ? decrypt(req.cookies.a) : 'Go home to ask a question.'
+  //  ?? (decrypt(req.cookies.a) || "Go home to ask a question.");
 
   // clear session data
   req.session.answer = "";
@@ -159,10 +193,20 @@ app.post("/ask", express.json(), async (req, res) => {
         Math.floor(generatedSpeech.length / 2)
       );
 
-      const halfAnswer = halfGeneratedSpeech + `<span hide>${LOREM}</span>`;
+      // TODO; do this better later. genSp / lorem.length - also maybe do a modulus thingy
+      const halfLorem = LOREM.repeat(5).slice(0, Math.floor(generatedSpeech.length / 2))
+      
+      const halfAnswer = halfGeneratedSpeech + `<span hide>${halfLorem}</span>`;
       req.session.half_answer = halfAnswer;
 
       console.log("sent");
+
+      // Hash the answer
+
+      res.cookie('asking', crypto.randomBytes(5).toString('hex')) // 10 random numbers as identifiers??
+      res.cookie('a', encrypt(generatedSpeech))
+      res.cookie('q', encrypt(req.body.message))
+      
       res.send({
         say: halfAnswer,
       });

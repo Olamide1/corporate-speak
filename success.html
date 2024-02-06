@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,38 +11,86 @@
     <!-- Thank-God1 -->
     <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
+
 <body>
 
+    <div id="notif" class="notification is-success" style="display: none;">
+        <button class="delete" onclick="deleteNotification()"></button>
+        Message copied.
+    </div>
 
-<div id="answer-here"></div>
+    <section class="section">
+        <h1 class="title">Your message</h1>
+        <div class="container is-centered">
+            <div class="card">
+                <div class="card-content">
+                    <div id="answer-here">
 
-<a href="/">Go Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="buttons mt-5">
+            <a class="button is-black" href="/">Go Home</a>
+
+            <button class="button" onclick="copyAnswer()" style="gap: 5px;">
+                Copy
+                <svg width="15px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <title>content-copy</title>
+                    <path
+                        d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" />
+                </svg>
+            </button>
+        </div>
+
+    </section>
+
 
     <script>
+        const _BASE_URL =
+            window.location.host === "youreplied.com"
+                ? "https://corporate-speak-b6a8f89a1523.herokuapp.com"
+                : "http://localhost:3000";
 
-const _BASE_URL =
-window.location.host === "youreplied.com"
-    ? "https://corporate-speak-b6a8f89a1523.herokuapp.com"
-    : "http://localhost:3000";
 
-
-    const generatedSpeechPlaceholder = document.getElementById("answer-here");
+        const generatedSpeechPlaceholder = document.getElementById("answer-here");
 
         // Make an API request to OpenAI with the updated headers
         fetch(`${_BASE_URL}/success`, {
-        method: 'GET',
-        
-    })
-    .then(response => response.json())
-    .then(data => {
-        // console.log('da', data);
-        // Display the generated speech in the placeholder
-        generatedSpeechPlaceholder.innerHTML = data.answer;
+            method: 'GET',
+        })
+            .then(response => response.json())
+            .then(data => {
+                // console.log('da', data);
+                // Display the generated speech in the placeholder
+                generatedSpeechPlaceholder.innerText = data.answer;
 
-    })
-    .catch(error => {
-        console.error("Error:", error);
-    });
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+
+        const deleteNotification = () => {
+            document.getElementById('notif').style.display = 'none'
+        }
+
+        const copyAnswer = () => {
+
+            navigator.clipboard.writeText(generatedSpeechPlaceholder.innerText).then(() => {
+                console.log('Content copied to clipboard');
+                document.getElementById('notif').style.display = 'block'
+
+                setTimeout(() => {
+                    document.getElementById('notif').style.display = 'none'
+                }, 5000)
+                /* Resolved - text copied to clipboard successfully */
+            }, () => {
+                console.error('Failed to copy');
+                /* Rejected - text failed to copy to the clipboard */
+            });
+
+        }
     </script>
 
 </body>
