@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(data => {
         // console.log('da', data);
         // Display the generated speech in the placeholder
-        generatedSpeechPlaceholder.innerHTML = data.say;
+        generatedSpeechPlaceholder.innerText = data.say;
 
         // show the show full message button
         document.getElementsByName('pay-up')[0].style.display = 'block'

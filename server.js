@@ -22,7 +22,7 @@ const _session = {
 };
 if (process.env.NODE_ENV === "production") {
   app.set("trust proxy", 1); // trust first proxy
-  _session.cookie.secure = true; // serve secure cookies
+  // _session.cookie.secure = true; // serve secure cookies
 }
 app.use(session(_session));
 
