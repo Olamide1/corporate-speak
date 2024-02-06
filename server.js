@@ -132,7 +132,7 @@ app.post("/ask", express.json(), async (req, res) => {
       },
     ],
     max_tokens: 200, // Adjust the max tokens as needed
-    temperature: 0.7, // Adjust the temperature for creativity
+    temperature: 1.0, // Adjust the temperature for creativity
     n: 1, // Number of responses to generate
   };
 
