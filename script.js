@@ -88,3 +88,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     });
 });
+
+function trackButtonClick() {
+    mixpanel.track('Message Generated', {
+      'message': document.getElementById("speechForm").value
+    });
+  }
