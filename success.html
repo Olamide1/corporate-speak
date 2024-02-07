@@ -72,13 +72,13 @@
         // Make an API request to OpenAI with the updated headers
         fetch(`${_BASE_URL}/success`, {
             method: 'POST',
-            mode:"no-cors",
+            // mode: "no-cors",
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 answer: sessionStorage.getItem('you_replied'),
-                question: sessionStorage.getItem('you_asked')
+                // question: sessionStorage.getItem('you_asked')
             }),
         })
             .then(response => response.json())
@@ -87,7 +87,7 @@
                 // Display the generated speech in the placeholder
                 generatedSpeechPlaceholder.innerText = data.answer;
 
-                originalQuestionPlaceholder.innerText = data.question;
+                originalQuestionPlaceholder.innerText = sessionStorage.getItem('you_asked');
 
                 // clear session storage.
                 sessionStorage.removeItem('you_replied')
