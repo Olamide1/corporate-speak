@@ -126,6 +126,7 @@ app.post("/success", express.json(), async (req, res) => {
   // const answer = req.session.answer ? req.session.answer : req.cookies.a ? decrypt(req.cookies.a) : 'Go home to ask a question.'
   const answer = req.body.answer ? decrypt(req.body.answer) : "Go home to ask a question.";
 
+  const question = decrypt(req.body.question)
   // clear session data
   req.session.answer = "";
   req.session.half_answer = "";
@@ -134,6 +135,7 @@ app.post("/success", express.json(), async (req, res) => {
   // res.send(JSON.stringify(answer));
 
   res.send({
+    question: question,
     answer: answer
   })
 });

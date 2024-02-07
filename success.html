@@ -20,7 +20,18 @@
     </div>
 
     <section class="mx-5">
-        <h1 class="title">Your message</h1>
+        <h1 class="sub-title">Your message</h1>
+        <div class="container is-centered">
+            <div class="card">
+                <div class="card-content">
+                    <div id="question-here">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1 class="sub-title">Your <i>corporate</i> message</h1>
         <div class="container is-centered">
             <div class="card">
                 <div class="card-content">
@@ -56,13 +67,18 @@
 
         const generatedSpeechPlaceholder = document.getElementById("answer-here");
 
+        const originalQuestionPlaceholder = document.getElementById("question-here");
+
         // Make an API request to OpenAI with the updated headers
         fetch(`${_BASE_URL}/success`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({answer: sessionStorage.getItem('you_replied')}),
+            body: JSON.stringify({
+                answer: sessionStorage.getItem('you_replied'),
+                question: sessionStorage.getItem('you_asked')
+            }),
         })
             .then(response => response.json())
             .then(data => {
@@ -70,8 +86,11 @@
                 // Display the generated speech in the placeholder
                 generatedSpeechPlaceholder.innerText = data.answer;
 
+                originalQuestionPlaceholder.innerText = data.question;
+
                 // clear session storage.
                 sessionStorage.removeItem('you_replied')
+                sessionStorage.removeItem('you_asked')
 
             })
             .catch(error => {

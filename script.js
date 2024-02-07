@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Collect user input from form fields
         const message = document.getElementById("messageContent").value;
        
+        sessionStorage.setItem('you_asked', message)
         // Make an API request to OpenAI with the updated headers
     fetch(`${_BASE_URL}/ask`, {
         method: 'POST',
