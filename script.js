@@ -90,7 +90,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function trackButtonClick() {
+    var messageContent = document.getElementById("messageContent").value;
     mixpanel.track('Message Generated', {
-      'message': document.getElementById("speechForm").value
+      'message': messageContent
     });
-  }
+}

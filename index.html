@@ -18,13 +18,15 @@
 
 
 <script type="text/javascript">
-    mixpanel.init('ffff27805fc8a8355ce5661cc368bcf6', {track_pageview: true});
+// Remove the 'track_pageview' option if you are going to manually track page views
+mixpanel.init('ffff27805fc8a8355ce5661cc368bcf6');
 </script>
 
 <script type="text/javascript">
     mixpanel.track("Page Viewed", {
-      "page": "Home_page"
-    });
+  "page": "Home_page"
+});
+
   </script>
   
 </head>
@@ -63,7 +65,7 @@
             <div class="columns is-centered">
                 <div class="column is-half">
                     <h3 class="title has-text-centered">Corporate Message Generator</h3>
-                    <form id="speechForm">
+                    <form id="speechForm" onsubmit="trackButtonClick(); return false;">
                       
                         <div class="field">
                             <label class="label">Message Content</label>
