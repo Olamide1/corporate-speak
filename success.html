@@ -17,14 +17,11 @@
 
 
 <script type="text/javascript">
-    mixpanel.init('ffff27805fc8a8355ce5661cc368bcf6');
+    mixpanel.init('ffff27805fc8a8355ce5661cc368bcf6', { debug: true, track_pageview: true, persistence: 'localStorage' });
+    mixpanel.track('Success_page')
+
 </script>
 
-<script type="text/javascript">
-    mixpanel.track("Page Viewed", {
-      "page": "Success_page"
-    });
-  </script>
 </head>
 
 <body>
@@ -132,14 +129,11 @@
                 /* Rejected - text failed to copy to the clipboard */
             });
 
-
-function trackButtonClick() {
-    mixpanel.track('Answer Copied', {
+            mixpanel.track('Answer Copied', {
       'message': document.getElementById("answer-here").value
     });
-  }
-
         }
+
     </script>
 
 </body>
