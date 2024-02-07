@@ -72,6 +72,7 @@
         // Make an API request to OpenAI with the updated headers
         fetch(`${_BASE_URL}/success`, {
             method: 'POST',
+            mode:"no-cors",
             headers: {
                 'Content-Type': 'application/json',
             },

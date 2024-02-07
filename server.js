@@ -43,7 +43,7 @@ if (process.env.NODE_ENV === 'production') {
 app.use(cookieParser(process.env.SESSION_SECRET, cookieOptions))
 
 const corsOptions = {
-  origin: 'https://youreplied.com',
+  origin: ['https://youreplied.com'],
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 app.use(cors(corsOptions));
