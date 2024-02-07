@@ -122,9 +122,9 @@ app.post(
   }
 );
 
-app.get("/success", async (req, res) => {
-  const answer = req.session.answer ? req.session.answer : req.cookies.a ? decrypt(req.cookies.a) : 'Go home to ask a question.'
-  //  ?? (decrypt(req.cookies.a) || "Go home to ask a question.");
+app.post("/success", express.json(), async (req, res) => {
+  // const answer = req.session.answer ? req.session.answer : req.cookies.a ? decrypt(req.cookies.a) : 'Go home to ask a question.'
+  const answer = req.body.answer ? decrypt(req.body.answer) : "Go home to ask a question.";
 
   // clear session data
   req.session.answer = "";
@@ -196,7 +196,7 @@ app.post("/ask", express.json(), async (req, res) => {
       // TODO; do this better later. genSp / lorem.length - also maybe do a modulus thingy
       const halfLorem = LOREM.repeat(5).slice(0, Math.floor(generatedSpeech.length / 2))
       
-      const halfAnswer = halfGeneratedSpeech + `<span hide>${halfLorem}</span>`;
+      const halfAnswer = halfGeneratedSpeech;
       req.session.half_answer = halfAnswer;
 
       console.log("sent");
@@ -204,11 +204,14 @@ app.post("/ask", express.json(), async (req, res) => {
       // Hash the answer
 
       res.cookie('asking', crypto.randomBytes(5).toString('hex')) // 10 random numbers as identifiers??
-      res.cookie('a', encrypt(generatedSpeech))
+      const encryptedAnswer = encrypt(generatedSpeech)
+      res.cookie('a', encryptedAnswer)
       res.cookie('q', encrypt(req.body.message))
       
       res.send({
         say: halfAnswer,
+        hide: `<span hide>${halfLorem}</span>`,
+        answer: encryptedAnswer
       });
     })
     .catch((error) => {

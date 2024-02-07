@@ -58,13 +58,20 @@
 
         // Make an API request to OpenAI with the updated headers
         fetch(`${_BASE_URL}/success`, {
-            method: 'GET',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({answer: sessionStorage.getItem('you_replied')}),
         })
             .then(response => response.json())
             .then(data => {
                 // console.log('da', data);
                 // Display the generated speech in the placeholder
                 generatedSpeechPlaceholder.innerText = data.answer;
+
+                // clear session storage.
+                sessionStorage.removeItem('you_replied')
 
             })
             .catch(error => {

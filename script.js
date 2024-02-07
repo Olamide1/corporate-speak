@@ -50,6 +50,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const speechForm = document.getElementById("speechForm");
     const generatedSpeechPlaceholder = document.getElementById("generatedSpeechPlaceholder");
 
+    const loremPlaceholder = document.getElementById("lorem");
+
     // Add an event listener to the form for submission
     speechForm.addEventListener("submit", function (e) {
         e?.preventDefault(); // Prevent the default form submission
@@ -72,6 +74,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // console.log('da', data);
         // Display the generated speech in the placeholder
         generatedSpeechPlaceholder.innerText = data.say;
+
+        loremPlaceholder.innerHTML = data.hide
+
+        sessionStorage.setItem('you_replied', data.answer)
 
         // show the show full message button
         document.getElementsByName('pay-up')[0].style.display = 'block'

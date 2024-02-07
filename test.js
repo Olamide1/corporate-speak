@@ -16,8 +16,10 @@ function decrypt(text){
   return dec
 }
 
-const t = 'Yes, of course I do.'
+const t = 'Yes, of course I do. Yes, of course I do. Yes, of course I do. Yes, of course I do. Yes, of course I do. Yes, of course I do. Yes, of course I do.'
 
 const eT = encrypt(t)
+
+console.log('how long?', eT);
 
 console.log(decrypt(eT));
