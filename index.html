@@ -19,7 +19,7 @@
 
 <script type="text/javascript">
 // Remove the 'track_pageview' option if you are going to manually track page views
-mixpanel.init('ffff27805fc8a8355ce5661cc368bcf6' , { debug: true, track_pageview: true, persistence: 'localStorage' });
+mixpanel.init('ffff27805fc8a8355ce5661cc368bcf6' , { debug: true, track_pageview: true, persistence: 'localStorage', ignore_dnt: true });
 mixpanel.track('Home_page')
 function trackButtonClick() {
     var messageContent = document.getElementById("messageContent").value;
