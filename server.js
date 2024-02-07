@@ -9,6 +9,10 @@ const cookieParser = require('cookie-parser')
  * Reset Session once payment is made.
  */
 
+// https://corporate-speak-b6a8f89a1523.herokuapp.com/success
+
+// https://youreplied.com
+
 const cors = require("cors"); // Import CORS module
 const app = express();
 const port = process.env.PORT || 3000;
@@ -37,7 +41,12 @@ if (process.env.NODE_ENV === 'production') {
   cookieOptions.secure = true // localhost, too, won't work if true
 }
 app.use(cookieParser(process.env.SESSION_SECRET, cookieOptions))
-app.use(cors());
+
+const corsOptions = {
+  origin: 'https://youreplied.com',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use(express.static("."));
