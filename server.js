@@ -62,7 +62,7 @@ const _BASE_URL =
 const LOREM =
   "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dignissimos hic laborum odit ex, quas tenetur? Harum, sit obcaecati corporis modi natus voluptatibus voluptate repellendus maxime quos reiciendis, cum repudiandae.";
 
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY_TEST, {
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY_PROD, {
   apiVersion: "2022-08-01",
   appInfo: {
     // For sample support and debugging, not required for production:
@@ -100,7 +100,7 @@ app.post(
         // customer_email: newOrder.email, // maybe get from cookies
         line_items: [
           {
-            price: process.env.STRIPE_TEST_PRICE, // stripe price id
+            price: process.env.STRIPE_PRICE_001, // stripe price id
             quantity: 1,
           },
         ],
