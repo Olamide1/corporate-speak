@@ -14,12 +14,12 @@
 
 <body>
 
-    <div id="notif" class="notification is-success" style="display: none;">
+    <div id="notif" class="notification is-success" style="visibility: hidden;">
         <button class="delete" onclick="deleteNotification()"></button>
         Message copied.
     </div>
 
-    <section class="section">
+    <section class="mx-5">
         <h1 class="title">Your message</h1>
         <div class="container is-centered">
             <div class="card">
@@ -79,17 +79,17 @@
             });
 
         const deleteNotification = () => {
-            document.getElementById('notif').style.display = 'none'
+            document.getElementById('notif').style.visibility = 'hidden'
         }
 
         const copyAnswer = () => {
 
             navigator.clipboard.writeText(generatedSpeechPlaceholder.innerText).then(() => {
                 console.log('Content copied to clipboard');
-                document.getElementById('notif').style.display = 'block'
+                document.getElementById('notif').style.visibility = 'visible'
 
                 setTimeout(() => {
-                    document.getElementById('notif').style.display = 'none'
+                    document.getElementById('notif').style.visibility = 'hidden'
                 }, 5000)
                 /* Resolved - text copied to clipboard successfully */
             }, () => {
