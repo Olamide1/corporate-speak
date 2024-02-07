@@ -20,7 +20,7 @@
     </div>
 
     <section class="mx-5">
-        <h1 class="title is-2">Your original message</h1>
+        <h1 class="title is-4">Your original message</h1>
         <div class="container is-centered">
             <div class="card">
                 <div class="card-content">
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <h1 class="title is-2">Your <i>corporate</i> message</h1>
+        <h1 class="title is-4 mt-4">Your <i>corporate</i> message</h1>
         <div class="container is-centered">
             <div class="card">
                 <div class="card-content">
@@ -87,7 +87,7 @@
                 // Display the generated speech in the placeholder
                 generatedSpeechPlaceholder.innerText = data.answer;
 
-                originalQuestionPlaceholder.innerText = sessionStorage.getItem('you_asked');
+                originalQuestionPlaceholder.innerText = sessionStorage.getItem('you_asked') ?? "Go home to ask a question.";
 
                 // clear session storage.
                 sessionStorage.removeItem('you_replied')
