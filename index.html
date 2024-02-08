@@ -21,7 +21,12 @@
 // Remove the 'track_pageview' option if you are going to manually track page views
 mixpanel.init('ffff27805fc8a8355ce5661cc368bcf6' , { debug: true, track_pageview: true, persistence: 'localStorage', ignore_dnt: true });
 mixpanel.track('Home_page')
-
+function trackButtonClick() {
+    var messageContent = document.getElementById("messageContent").value;
+    mixpanel.track('Message Generated', {
+      'message': messageContent
+    });
+}
 
 </script>
 
@@ -73,7 +78,7 @@ mixpanel.track('Home_page')
 
                         <div class="field is-grouped is-grouped-centered">
                             <div class="control">
-                                <button class="button is-black" type="submit">Talk your sh*t</button>
+                                <button class="button is-black" type="submit" onclick="trackButtonClick()">Talk your sh*t</button>
                             </div>
                         </div>
                     </form>
