@@ -100,7 +100,7 @@ app.post(
         // customer_email: newOrder.email, // maybe get from cookies
         line_items: [
           {
-            price: process.env.STRIPE_PRICE_001, // stripe price id
+            price: process.env.STRIPE_PRICE_70_CENTS, // stripe price id
             quantity: 1,
           },
         ],
