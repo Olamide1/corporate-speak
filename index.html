@@ -6,6 +6,8 @@
     <meta name="description" content="Direct, effective corporate communication with You Replied's Speak Generator. Feed back Corporate Speak. F You. Talking to you. The hell? Message Content. Job done. T he. Corporate Communication. Corporate and Communication.">
     <title>Corporate Speak Generator - You Replied</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
     <link rel="stylesheet" href="styles.css"> <!-- Custom CSS for design -->
     <!-- Thank-God1 -->
     <!-- <link rel="stylesheet" href="style.css"> -->
@@ -28,6 +30,15 @@ function trackButtonClick() {
     });
 }
 
+function toggleAccordion(id) {
+  var element = document.getElementById(id);
+  element.classList.toggle('is-hidden');
+  mixpanel.track('compare_dropdown')
+}
+
+function trackComparison () {
+    mixpanel.track('discover_more_toggle')
+}
 </script>
 
   
@@ -61,6 +72,28 @@ function trackButtonClick() {
             <p class="subtitle">No fluff. Just effective corporate communication.</p>
         </div>
     </section>
+
+    <div id="whyChooseAccordion" class="box is-small">
+        <article class="message is-greyer">
+          <div class="message-header" onclick="toggleAccordion('accordionBody')">
+            <p>Why Choose <span class="has-text-primary">"You Replied"</span> Over ChatGPT?</p>
+            <button class="button is-small" aria-label="toggle">
+              <span class="icon is-small">
+                <i class="fas fa-chevron-down"></i>
+              </span>
+            </button>
+          </div>
+          <div id="accordionBody" class="message-body is-hidden">
+            <ul>
+                <li><b>Specialized Training:</b> Our model is finely tuned for corporate communication, ensuring unmatched precision and relevance.</li>
+                <li><b>Professional Edge:</b> Elevates your communication with a professional flair that's both respectful and engaging.</li>
+                <li><b>Smart Adaptation:</b> Intuitively aligns with corporate contexts, delivering spot-on messaging for any scenario.</li>
+              </ul>              
+            <a href="#generator" class="button is-black" onclick="trackComparison()">Discover More</a>
+          </div>
+        </article>
+      </div>
+      
 
     <section class="section" id="generator">
         <div class="container">
