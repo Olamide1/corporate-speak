@@ -174,7 +174,7 @@ app.post("/ask", express.json(), async (req, res) => {
 
   // Prepare the data to send to the OpenAI API
   const inputData = {
-    model: "gpt-3.5-turbo",
+    model: "gpt-4",
     messages: [
       {
         role: "user",
