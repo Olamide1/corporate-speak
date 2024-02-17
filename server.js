@@ -164,6 +164,11 @@ app.post("/success", express.json(), async (req, res) => {
   });
 }); */
 
+/**
+ * How do we know who's a first time asker?
+ * If there's no cookie present in the request.
+ * If they've cleared cookies - we can also check the body.
+ */
 app.post("/ask", express.json(), async (req, res) => {
   console.log("req.body", req.body);
 
@@ -218,9 +223,12 @@ app.post("/ask", express.json(), async (req, res) => {
       const encryptedAnswer = encrypt(generatedSpeech)
       res.cookie('a', encryptedAnswer)
       res.cookie('q', encrypt(req.body.message))
+      res.cookie('dfk', '72*IO8cb9uOMP')
+
+      const askedBefore = req.cookies.dfk
       
       res.send({
-        say: halfAnswer,
+        say: askedBefore ? halfAnswer : generatedSpeech,
         hide: `<span hide>${halfLorem}</span>`,
         answer: encryptedAnswer
       });
