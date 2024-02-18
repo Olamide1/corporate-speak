@@ -68,23 +68,32 @@ document.addEventListener("DOMContentLoaded", function () {
         headers: {
             'Content-Type': 'application/json',
         },
+        credentials: 'include',
+        mode: 'cors',
         body: JSON.stringify({message}),
     })
     .then(response => response.json())
     .then(data => {
         // console.log('da', data);
-        // Display the generated speech in the placeholder
-        generatedSpeechPlaceholder.innerText = data.say;
 
-        loremPlaceholder.innerHTML = data.hide
+        if (data.return) {
+            // Display the generated speech in the placeholder
+            generatedSpeechPlaceholder.innerText = data.say;
 
-        sessionStorage.setItem('you_replied', data.answer)
+            loremPlaceholder.innerHTML = data.hide
 
-        // show the show full message button
-        document.getElementsByName('pay-up')[0].style.display = 'block'
+            sessionStorage.setItem('you_replied', data.answer)
+
+            // show the show full message button
+            document.getElementsByName('pay-up')[0].style.display = 'block'
+        } else {
+            generatedSpeechPlaceholder.innerText = data.say;
+        }
     })
     .catch(error => {
         console.error("Error:", error);
+
+        generatedSpeechPlaceholder.innerText = 'Something failed. It\'s us, not you.'
     });
     });
 });

@@ -32,7 +32,7 @@ app.use(session(_session));
 
 const cookieOptions = {
   httpOnly: true, // so frontend js can't access
-  maxAge: (1000 * 60 * 60 * 24), // 1 day
+  // maxAge: (1000 * 60 * 60 * 24), // 1 day
   sameSite: 'none',
   // path: '' // until we figure out how to add multiple path
 }
@@ -43,6 +43,8 @@ if (process.env.NODE_ENV === 'production') {
 app.use(cookieParser(process.env.SESSION_SECRET, cookieOptions))
 
 const corsOptions = {
+  credentials: true,
+  // allowedHeaders: ['Content-Type', 'Authorization', ],
   origin: ['https://youreplied.com'],
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
@@ -170,7 +172,23 @@ app.post("/success", express.json(), async (req, res) => {
  * If they've cleared cookies - we can also check the body.
  */
 app.post("/ask", express.json(), async (req, res) => {
-  console.log("req.body", req.body);
+  // for testing...
+  /* console.log("req.body", req.body);
+  console.log("req.cookies", req.cookies);
+
+  if (!req.body.message) {
+    return res.sendStatus(422)
+  }
+
+  if (!req.cookies.dfk) {
+    res.cookie('dfk', '72*IO8cb9uOMP', cookieOptions)
+    return res.status(200).send({
+      say: 'played on this beat',
+      hide: `<span hide>Nothing here yet</span>`,
+      answer: 'encryptedAnswer',
+      return: null
+    })
+  } */
 
   // Prepare the data to send to the OpenAI API
   const inputData = {
@@ -228,9 +246,10 @@ app.post("/ask", express.json(), async (req, res) => {
       const askedBefore = req.cookies.dfk
       
       res.send({
-        say: askedBefore ? halfAnswer : generatedSpeech,
+        say: Boolean(askedBefore) ? halfAnswer : generatedSpeech,
         hide: `<span hide>${halfLorem}</span>`,
-        answer: encryptedAnswer
+        answer: encryptedAnswer,
+        return: Boolean(askedBefore)
       });
     })
     .catch((error) => {
