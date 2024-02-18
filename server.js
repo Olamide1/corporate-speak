@@ -241,7 +241,7 @@ app.post("/ask", express.json(), async (req, res) => {
       const encryptedAnswer = encrypt(generatedSpeech)
       res.cookie('a', encryptedAnswer)
       res.cookie('q', encrypt(req.body.message))
-      res.cookie('dfk', '72*IO8cb9uOMP')
+      res.cookie('dfk', '72*IO8cb9uOMP', cookieOptions)
 
       const askedBefore = req.cookies.dfk
       
