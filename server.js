@@ -17,6 +17,8 @@ const cors = require("cors"); // Import CORS module
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.disable('x-powered-by');
+
 // session
 const _session = {
   secret: process.env.SESSION_SECRET,
