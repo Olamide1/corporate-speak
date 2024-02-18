@@ -4,6 +4,8 @@ const crypto = require("crypto");
 const express = require("express");
 const session = require("express-session");
 const cookieParser = require('cookie-parser')
+
+const db = require("./models/index");
 /**
  * Store data in session.
  * Reset Session once payment is made.
@@ -174,13 +176,15 @@ app.post("/success", express.json(), async (req, res) => {
  * If they've cleared cookies - we can also check the body.
  */
 app.post("/ask", express.json(), async (req, res) => {
-  // for testing...
-  /* console.log("req.body", req.body);
-  console.log("req.cookies", req.cookies);
 
   if (!req.body.message) {
     return res.sendStatus(422)
   }
+  // for testing...
+  /* console.log("req.body", req.body);
+  console.log("req.cookies", req.cookies);
+
+  
 
   if (!req.cookies.dfk) {
     res.cookie('dfk', '72*IO8cb9uOMP', cookieOptions)
@@ -219,10 +223,20 @@ app.post("/ask", express.json(), async (req, res) => {
     body: JSON.stringify(inputData),
   })
     .then((response) => response.json())
-    .then((data) => {
+    .then(async (data) => {
       // Display the generated speech in the placeholder
       const generatedSpeech = data.choices[0].message.content;
       req.session.answer = generatedSpeech;
+
+      const talker_ref = req.cookies.asking ?? crypto.randomBytes(5).toString('hex')
+      res.cookie('asking', talker_ref, cookieOptions) // 10 random numbers as identifiers
+
+      // Save in db
+      await db.Talk.create({
+          talker_ref: talker_ref,
+          plain_talk: req.body.message,
+          corporate_talk: generatedSpeech
+      })
 
       const halfGeneratedSpeech = generatedSpeech.slice(
         0,
@@ -239,7 +253,6 @@ app.post("/ask", express.json(), async (req, res) => {
 
       // Hash the answer
 
-      res.cookie('asking', crypto.randomBytes(5).toString('hex')) // 10 random numbers as identifiers??
       const encryptedAnswer = encrypt(generatedSpeech)
       res.cookie('a', encryptedAnswer)
       res.cookie('q', encrypt(req.body.message))
