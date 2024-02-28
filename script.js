@@ -62,6 +62,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const message = document.getElementById("messageContent").value;
        
         sessionStorage.setItem('you_asked', message)
+
+        const mixpanel_device_id = mixpanel?.cookie?.props?.$device_id
         // Make an API request to OpenAI with the updated headers
     fetch(`${_BASE_URL}/ask`, {
         method: 'POST',
@@ -72,7 +74,8 @@ document.addEventListener("DOMContentLoaded", function () {
         mode: 'cors',
         body: JSON.stringify({
             message, 
-            dfk: localStorage?.getItem('dfk') ?? sessionStorage?.getItem('dfk')
+            dfk: localStorage?.getItem('dfk') ?? sessionStorage?.getItem('dfk'),
+            mixpanel_device_id
         }),
     })
     .then(response => response.json())

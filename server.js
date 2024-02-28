@@ -196,6 +196,25 @@ app.post("/ask", express.json(), async (req, res) => {
     })
   } */
 
+  let _askedBefore = false
+  try {
+    if (req.body.mixpanel_device_id) {
+      const [user, created] = await db.MixPanelUser.findOrCreate({
+        where: { mix_panel_user_device_id: req.body.mixpanel_device_id },
+      });
+
+      _askedBefore = !created
+    }
+  } catch (error) {
+    console.log('ERRR putting mix panel user', error);
+  }
+
+  const askedBefore = req.cookies.dfk ?? req.body.dfk ?? _askedBefore
+
+  return res.json({
+    _askedBefore, askedBefore
+  })
+
   // Prepare the data to send to the OpenAI API
   const inputData = {
     model: "gpt-4",
@@ -258,7 +277,7 @@ app.post("/ask", express.json(), async (req, res) => {
       res.cookie('q', encrypt(req.body.message))
       res.cookie('dfk', '72*IO8cb9uOMP', cookieOptions) // this is what works.
 
-      const askedBefore = req.cookies.dfk ?? req.body.dfk
+      
       
       res.send({
         say: Boolean(askedBefore) ? halfAnswer : generatedSpeech,
