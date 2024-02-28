@@ -8,7 +8,7 @@
     "dev": "npx sequelize-cli db:migrate && nodemon --trace-deprecation server.js"
   },
   "repository": "https://github.com/Olamide1/corporate-speak.git",
-  "author": "Ossai Nwachukwu <nwachukwuossai@gmail.com>",
+  "author": "Ossai Nwachukwu <nwachukwuossai@gmail.com>, Olamide Akomolafe <theolaakomolafe@gmail.com>",
   "license": "MIT",
   "private": true,
   "dependencies": {
