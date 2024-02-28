@@ -211,10 +211,6 @@ app.post("/ask", express.json(), async (req, res) => {
 
   const askedBefore = req.cookies.dfk ?? req.body.dfk ?? _askedBefore
 
-  return res.json({
-    _askedBefore, askedBefore
-  })
-
   // Prepare the data to send to the OpenAI API
   const inputData = {
     model: "gpt-4",
