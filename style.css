@@ -59,11 +59,24 @@ body, html {
 
 /* Footer styles */
 .footer {
-    background-color: #000; /* Black */
+    background-color: #282727; /* Black */
     color: #fff; /* White text */
 }
 
 /* Responsive design adjustments as needed */
 @media (max-width: 768px) {
     /* Responsive styles */
+}
+/* Blog List Styling */
+#blog .box {
+    transition: transform 0.3s ease;
+}
+
+#blog .box:hover {
+    transform: translateY(-10px);
+}
+
+/* Blog Post Page Styling */
+.hero.is-primary {
+    margin-bottom: 2rem;
 }
