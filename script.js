@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         credentials: 'include',
         mode: 'cors',
-        body: JSON.stringify({message}),
+        body: JSON.stringify({message, dfk: localStorage.getItem('dfk')}),
     })
     .then(response => response.json())
     .then(data => {
@@ -83,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
             loremPlaceholder.innerHTML = data.hide
 
             sessionStorage.setItem('you_replied', data.answer)
+            localStorage.setItem('dfk', 'ladbudaru')
 
             // show the show full message button
             document.getElementsByName('pay-up')[0].style.display = 'block'

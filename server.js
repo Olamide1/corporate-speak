@@ -258,7 +258,7 @@ app.post("/ask", express.json(), async (req, res) => {
       res.cookie('q', encrypt(req.body.message))
       res.cookie('dfk', '72*IO8cb9uOMP', cookieOptions) // this is what works.
 
-      const askedBefore = req.cookies.dfk
+      const askedBefore = req.cookies.dfk ?? req.body.dfk
       
       res.send({
         say: Boolean(askedBefore) ? halfAnswer : generatedSpeech,
