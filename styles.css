@@ -1,3 +1,181 @@
 span[hide] {
     filter: blur(4px);
 }
+/* Base styles */
+body, html {
+    font-family: 'Poppins', sans-serif;
+    color: #004d40;
+    background-color: #e0f7fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-item {
+    color: #004d40 !important;
+}
+
+.navbar-brand .title {
+    color: #00796b !important;
+}
+
+.navbar-burger {
+    color: #004d40 !important;
+}
+
+/* Hero section styles */
+.hero {
+    background: linear-gradient(to right, #00796b, #004d40);
+    color: #ffffff;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.hero .title {
+    font-size: 3rem;
+    color: #ffffff; /* Ensuring the title text is white */
+}
+
+.hero .subtitle {
+    font-size: 1.5rem;
+    color: #ffffff; /* Ensuring the subtitle text is white */
+}
+
+/* Button styles */
+.button {
+    background-color: #ff9800;
+    color: #ffffff;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+    background-color: #ffa726;
+    transform: scale(1.05);
+}
+
+/* Section styles */
+.section {
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+
+.section .title {
+    color: #004d40;
+}
+
+.section .subtitle {
+    color: #666666;
+}
+
+/* Features section */
+#features .columns .column {
+    background: #ffffff;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+#features .columns .column .title {
+    color: #004d40;
+}
+
+/* Testimonials section */
+#testimonials blockquote {
+    background: #00796b;
+    color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    font-style: italic;
+}
+
+/* Pricing card styles */
+.card {
+    background-color: #ffffff;
+    color: #004d40;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card .title {
+    color: #004d40;
+}
+
+.card .subtitle {
+    color: #666666;
+}
+
+/* Footer styles */
+.footer {
+    background-color: #004d40;
+    color: #ffffff;
+    padding: 2rem 1.5rem;
+    text-align: center;
+}
+
+.footer a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .hero .title {
+        font-size: 2rem;
+    }
+    
+    .hero .subtitle {
+        font-size: 1.25rem;
+    }
+}
+/* Blog section styles */
+.section {
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+
+.section .title {
+    color: #004d40;
+}
+
+.section .subtitle {
+    color: #666666;
+}
+
+/* Blog post box styles */
+.box {
+    background: #ffffff;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Pagination styles */
+.pagination {
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.pagination .pagination-previous, .pagination .pagination-next, .pagination .pagination-link {
+    background-color: #00796b;
+    color: #ffffff;
+}
+
+.pagination .pagination-previous:hover, .pagination .pagination-next:hover, .pagination .pagination-link:hover {
+    background-color: #004d40;
+}
